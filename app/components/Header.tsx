@@ -1,6 +1,7 @@
 "use client";
 
 import manAtWork from "@/public/assets/man_at_work.svg";
+import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import GitHubCorner from "./GitHubCorner";
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -12,7 +13,7 @@ const Header = () => {
         <ThemeSwitcher />
       </div>
       <GitHubCorner />
-      <img className="w-3/4 sm:max-w-sm md:max-w-lg" alt="hero" src={manAtWork} />
+      <Image className="w-3/4 sm:max-w-sm md:max-w-lg" alt="hero" src={manAtWork} />
       <h1 className="font-semibold pt-2 md:pt-8 text-lg sm:text-xl md:text-2xl ">
         <TypeAnimation sequence={["Dr. Vanda Farsad"]} wrapper="span" speed={30} repeat={0} cursor={false} />
       </h1>

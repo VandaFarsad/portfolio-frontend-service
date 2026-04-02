@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "./shadcn-styles.css";
+@plugin "@iconify/tailwind4";
 
 :root {
   --background: #ffffff;

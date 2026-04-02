@@ -5,9 +5,11 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 const ThemeSwitcher = () => {
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains("dark"));
+    setMounted(true);
   }, []);
 
   const toggleDarkMode = (checked: boolean) => {
@@ -18,6 +20,8 @@ const ThemeSwitcher = () => {
       document.documentElement.classList.remove("dark");
     }
   };
+
+  if (!mounted) return null;
 
   return (
     <>
