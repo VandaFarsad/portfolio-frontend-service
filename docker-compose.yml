@@ -1,7 +1,6 @@
 services:
   portfolio-frontend-service:
     container_name: portfolio-frontend-service
-    image: portfolio-frontend-service
     build:
       context: ./
       target: deps
@@ -14,6 +13,12 @@ services:
     environment:
       NODE_ENV: development
     command: pnpm run dev
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     networks:
       - portfolio-network
 
