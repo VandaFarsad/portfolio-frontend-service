@@ -1,0 +1,22 @@
+services:
+  portfolio-frontend-service:
+    container_name: portfolio-frontend-service
+    image: portfolio-frontend-service
+    build:
+      context: ./
+      target: deps
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    command: pnpm run dev
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    external: true
