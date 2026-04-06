@@ -2,7 +2,7 @@ import { stackIconData } from "@/services/stackIconData";
 
 const Stack = () => {
   return (
-    <section className="w-full p-4 sm:p-10 md:p-40 font-sans flex flex-col justify-center items-center bg-white dark:bg-slate-800 text-black dark:text-white">
+    <section className="w-full min-h-screen p-4 sm:p-10 md:p-40 font-sans flex flex-col justify-center items-center bg-white dark:bg-slate-800 text-black dark:text-white">
       <div className="col-md-12 mx-auto pb-10 pt-8">
         <div className="sm:text-right pb-8 pl-4">
           <p className="text-2xl sm:text-4xl font-bold inline border-b-4 border-pink-600 dark:border-pink-400">

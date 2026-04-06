@@ -34,7 +34,7 @@ const Experience = () => {
   return (
     <section
       id="resume"
-      className="w-full pt-4 sm:pt-10 md:pt-40 overflow-hidden bg-slate-500 dark:bg-slate-600 text-black dark:text-white"
+      className="w-full min-h-screen pt-4 sm:pt-10 md:pt-40 overflow-hidden bg-slate-500 dark:bg-slate-600 text-black dark:text-white"
     >
       {state === "loading" && <h2 className="text-center py-8">Loading experiences...</h2>}
       {state === "error" && <h2 className="text-center py-8">Error while loading experiences...</h2>}
