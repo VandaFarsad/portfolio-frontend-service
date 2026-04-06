@@ -1,5 +1,6 @@
 "use client";
 
+import { Experience as ExperienceT, fetchExperiences } from "@/lib/experienceData";
 import WorkIcon from "@mui/icons-material/HomeWorkOutlined";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import { Grid } from "@mui/material";
@@ -7,7 +8,6 @@ import Chip from "@mui/material/Chip";
 import { useEffect, useState } from "react";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { Experience as ExperienceT, fetchExperiences } from "../api/experienceData";
 
 type FetchState = "initial" | "loading" | "success" | "error";
 

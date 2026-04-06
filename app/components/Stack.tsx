@@ -1,4 +1,4 @@
-import { stackIconData } from "../api/stackIconData";
+import { stackIconData } from "@/lib/stackIconData";
 
 const Stack = () => {
   return (
