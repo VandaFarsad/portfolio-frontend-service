@@ -1,16 +1,24 @@
 @import "tailwindcss";
+@import "tailwindcss/theme" layer(theme);
 @plugin "@iconify/tailwind4";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-background-light);
+  --foreground: var(--color-foreground-light);
   --font-shadows: "Shadows Into Light", cursive;
 }
 
+.dark {
+  --background: var(--color-background-dark);
+  --foreground: var(--color-foreground-dark);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not(.light) {
+    --background: var(--color-background-dark);
+    --foreground: var(--color-foreground-dark);
   }
 }
 
