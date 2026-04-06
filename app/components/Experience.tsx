@@ -84,6 +84,12 @@ const Experience = () => {
                               sx={{
                                 maxWidth: "100px",
                                 fontSize: "0.75rem",
+                                backgroundColor: "rgba(0, 0, 0, 0.08)",
+                                color: "rgba(0, 0, 0, 0.87)",
+                                ".dark &": {
+                                  backgroundColor: "rgba(255, 255, 255, 0.16)",
+                                  color: "white",
+                                },
                               }}
                             />
                           ))}
