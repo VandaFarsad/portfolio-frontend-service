@@ -1,13 +1,17 @@
 "use client";
 
-import { Experience as ExperienceT, fetchExperiences } from "@/lib/experienceData";
+import { Experience as ExperienceT, fetchExperiences } from "@/services/experienceData";
 import WorkIcon from "@mui/icons-material/HomeWorkOutlined";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
-import { Grid } from "@mui/material";
-import Chip from "@mui/material/Chip";
+import Timeline from "@mui/lab/Timeline";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineDot from "@mui/lab/TimelineDot";
+import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import { Chip, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
 
 type FetchState = "initial" | "loading" | "success" | "error";
 
@@ -32,8 +36,8 @@ const Experience = () => {
       id="resume"
       className="w-full pt-4 sm:pt-10 md:pt-40 overflow-hidden bg-slate-500 dark:bg-slate-600 text-black dark:text-white"
     >
-      {state === "loading" && <h2>Loading experiences...</h2>}
-      {state === "error" && <h2>Error while loading experiences...</h2>}
+      {state === "loading" && <h2 className="text-center py-8">Loading experiences...</h2>}
+      {state === "error" && <h2 className="text-center py-8">Error while loading experiences...</h2>}
       {state === "success" && (
         <>
           <div className="col-md-12 mx-auto pb-10 pt-8">
@@ -41,34 +45,55 @@ const Experience = () => {
               <p className="text-4xl font-bold inline border-b-4 border-pink-600 dark:border-pink-400">Experience</p>
             </div>
           </div>
-          <div className="col-md-8 mx-auto">
-            <VerticalTimeline>
+          <div className="max-w-6xl mx-auto px-4">
+            <Timeline position="alternate">
               {experiences.map(({ id, type, date, title, subtitle, tags }, index) => (
-                <VerticalTimelineElement
-                  key={index}
-                  className={`vertical-timeline-element--${type}`}
-                  date={date}
-                  intersectionObserverProps={{
-                    rootMargin: "0px 0px 0% 0px",
-                    threshold: 0.1,
-                  }}
-                  iconStyle={{ background: type === "work" ? "rgb(33, 150, 243)" : "rgb(233, 30, 99)", color: "#fff" }}
-                  icon={type === "work" ? <WorkIcon /> : <SchoolIcon />}
-                >
-                  <h3 className="text-xl font-semibold text-black">{title}</h3>
-                  {subtitle && <h4 className="vertical-timeline-element-subtitle text-black">{subtitle}</h4>}
-                  {tags && (
-                    <Grid container spacing={1} className="pt-4 text-xs">
-                      {tags.map((tag) => (
-                        <Grid key={tag} size="auto">
-                          <Chip label={tag} style={{ width: "100px", textOverflow: "ellipsis", overflow: "hidden" }} />
-                        </Grid>
-                      ))}
-                    </Grid>
-                  )}
-                </VerticalTimelineElement>
+                <TimelineItem key={id ?? index}>
+                  <TimelineOppositeContent color="text.secondary">
+                    <Typography variant="body2" className="dark:text-white">
+                      {date}
+                    </Typography>
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      sx={{
+                        backgroundColor: type === "work" ? "rgb(33, 150, 243)" : "rgb(233, 30, 99)",
+                      }}
+                    >
+                      {type === "work" ? <WorkIcon /> : <SchoolIcon />}
+                    </TimelineDot>
+                    {index < experiences.length - 1 && <TimelineConnector />}
+                  </TimelineSeparator>
+                  <TimelineContent>
+                    <div className="bg-white dark:bg-slate-700 rounded-lg p-4 shadow-lg">
+                      <Typography variant="h6" component="h3" className="font-semibold text-black dark:text-white">
+                        {title}
+                      </Typography>
+                      {subtitle && (
+                        <Typography variant="subtitle1" className="text-gray-600 dark:text-gray-300">
+                          {subtitle}
+                        </Typography>
+                      )}
+                      {tags && tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-3">
+                          {tags.map((tag) => (
+                            <Chip
+                              key={tag}
+                              label={tag}
+                              size="small"
+                              sx={{
+                                maxWidth: "100px",
+                                fontSize: "0.75rem",
+                              }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </TimelineContent>
+                </TimelineItem>
               ))}
-            </VerticalTimeline>
+            </Timeline>
           </div>
         </>
       )}

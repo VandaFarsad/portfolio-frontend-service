@@ -22,14 +22,13 @@
     "@iconify-json/skill-icons": "^1.2.4",
     "@iconify/tailwind4": "^1.2.3",
     "@mui/icons-material": "^7.3.9",
+    "@mui/lab": "7.0.1-beta.23",
     "@mui/material": "^7.3.9",
     "next": "16.1.6",
-    "next-auth": "^4.24.13",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-toggle-dark-mode": "^2.0.0",
-    "react-type-animation": "^3.2.0",
-    "react-vertical-timeline-component": "^4.0.0"
+    "react-type-animation": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
@@ -37,7 +36,6 @@
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@types/react-vertical-timeline-component": "^3.3.6",
     "eslint": "^10.1.0",
     "eslint-config-next": "16.1.6",
     "eslint-config-prettier": "^10.1.8",

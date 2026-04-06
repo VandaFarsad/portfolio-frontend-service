@@ -16,19 +16,19 @@ const ThemeSwitcher = () => {
     setIsDark(checked);
     if (checked) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   };
 
   if (!mounted) return null;
 
   return (
-    <>
-      <div>
-        <DarkModeSwitch checked={isDark} onChange={toggleDarkMode} size={40} />
-      </div>
-    </>
+    <div>
+      <DarkModeSwitch checked={isDark} onChange={toggleDarkMode} size={40} />
+    </div>
   );
 };
 

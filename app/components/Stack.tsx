@@ -1,4 +1,4 @@
-import { stackIconData } from "@/lib/stackIconData";
+import { stackIconData } from "@/services/stackIconData";
 
 const Stack = () => {
   return (
