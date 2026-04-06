@@ -21,11 +21,8 @@ export const fetchExperiences = async (): Promise<Experience[]> => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    console.log("Successfully fetched experiences");
-    console.log(response);
     const responseData = await response.json();
-    console.log(responseData);
-    return responseData as any;
+    return responseData as Experience[];
   } catch (error) {
     console.error(`Failed to fetch Experiences: ${error}`);
     return [];

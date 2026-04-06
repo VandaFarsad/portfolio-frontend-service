@@ -8,7 +8,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-screen text-center bg-white dark:bg-slate-800 text-black dark:text-white">
+    <section className="flex flex-col justify-center items-center min-h-screen text-center bg-white dark:bg-slate-800 text-black dark:text-white">
       <div className="absolute top-4 right-4">
         <ThemeSwitcher />
       </div>
@@ -40,7 +40,7 @@ const Header = () => {
       >
         Contact me
       </a>
-    </div>
+    </section>
   );
 };
 
