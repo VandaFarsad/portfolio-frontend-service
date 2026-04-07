@@ -175,7 +175,7 @@ Add these secrets to your GitHub repository (**Settings → Secrets and variable
 ```bash
 # Create and push a new release tag
 git tag v1.0.0
-git push origin v1.0.0
+git push --tags
 
 # Or create release via GitHub UI (Releases → Draft a new release)
 ```
