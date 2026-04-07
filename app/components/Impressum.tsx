@@ -119,7 +119,17 @@ const Impressum = () => {
           Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden derartige Inhalte umgehend entfernen.
           </p>
           <p className="mb-4">
-            <strong className="text-lg font-bold">4. Google Web Fonts (lokales Hosting)</strong>
+            <strong className="text-lg font-bold">4. Lokale Speicherung (localStorage)</strong>
+          </p>
+          <p className="mb-4 text-gray-700 dark:text-gray-300">
+          Diese Website verwendet die localStorage-Technologie Ihres Browsers, um Ihre bevorzugte Darstellung (helles
+          oder dunkles Farbschema) zu speichern. Diese Daten werden ausschließlich lokal auf Ihrem Endgerät gespeichert
+          und nicht an unsere Server oder Dritte übermittelt. Die Speicherung dient ausschließlich der Funktionalität
+          und Benutzerfreundlichkeit der Website. Sie können die gespeicherten Daten jederzeit über die
+          Einstellungen Ihres Browsers löschen.
+          </p>
+          <p className="mb-4">
+            <strong className="text-lg font-bold">5. Google Web Fonts (lokales Hosting)</strong>
           </p>
           <p className="mb-4 text-gray-700 dark:text-gray-300">
           Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Web Fonts, die von Google
@@ -129,7 +139,7 @@ const Impressum = () => {
           https://policies.google.com/privacy?hl=de.
           </p>
           <p className="mb-4">
-            <strong className="text-lg font-bold">5. jsDelivr CDN</strong>
+            <strong className="text-lg font-bold">6. jsDelivr CDN</strong>
           </p>
           <p className="mb-4 text-gray-700 dark:text-gray-300">
           Diese Seite nutzt ein sogenanntes “Content Delivery Network” (CDN) von jsDelivr. Ein CDN ist ein Dienst, mit
