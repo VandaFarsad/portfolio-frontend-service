@@ -147,19 +147,14 @@ const Impressum = () => {
           https://policies.google.com/privacy?hl=de.
           </p>
           <p className="mb-4">
-            <strong className="text-lg font-bold">6. jsDelivr CDN</strong>
+            <strong className="text-lg font-bold">6. Backend-API und Datenverarbeitung</strong>
           </p>
           <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Diese Seite nutzt ein sogenanntes “Content Delivery Network” (CDN) von jsDelivr. Ein CDN ist ein Dienst, mit
-          dessen Hilfe Inhalte unseres Onlineangebotes, insbesondere große Mediendateien, wie Grafiken oder Skripte mit
-          Hilfe regional verteilter und über das Internet verbundener Server, schneller ausgeliefert werden. Die
-          Verarbeitung der Daten der Nutzer erfolgt alleine zu den vorgenannten Zwecken und der Aufrechterhaltung der
-          Sicherheit und Funktionsfähigkeit des CDN. Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu
-          den Servern des CDN aufnehmen. Hierdurch erlangt dieser Kenntnis darüber, dass über Ihre IP-Adresse unsere
-          Website aufgerufen wurde. Die Nutzung erfolgt auf Grundlage unserer berechtigten Interessen, d.h. Interesse an
-          einer sicheren und effizienten Bereitstellung, Analyse sowie Optimierung unseres Onlineangebotes gem. Art. 6
-          Abs. 1 lit. f. DSGVO. Weitere Informationen finden Sie in der Datenschutzerklärung von jsDelivr:
-          https://www.jsdelivr.com/privacy-policy-jsdelivr-net/
+          Diese Website lädt dynamische Inhalte (Erfahrungen, Tech-Stack) von einem eigenen Backend-Server. 
+          Bei der Kommunikation mit dem Backend wird Ihre IP-Adresse technisch bedingt übertragen. Diese 
+          Daten werden ausschließlich zur Bereitstellung der angeforderten Inhalte verwendet und nicht zu 
+          Tracking- oder Analysezwecken gespeichert. Die Verarbeitung erfolgt auf Grundlage unserer 
+          berechtigten Interessen an einer funktionsfähigen Website gem. Art. 6 Abs. 1 lit. f. DSGVO.
           </p>
         </section>
 
