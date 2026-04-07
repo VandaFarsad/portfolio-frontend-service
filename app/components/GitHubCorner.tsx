@@ -1,7 +1,7 @@
 const GitHubCorner = () => {
   return (
     <a
-      href="https://github.com/VandaFarsad/portfolio-reactified"
+      href="https://github.com/VandaFarsad/portfolio-backend-service"
       className="github-corner"
       aria-label="View source on GitHub"
       target="_blank"
