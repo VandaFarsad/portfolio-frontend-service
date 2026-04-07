@@ -47,36 +47,36 @@ const Experience = () => {
           </div>
           <div className="max-w-6xl mx-auto px-4">
             <Timeline position="alternate">
-              {experiences.map(({ id, type, date, title, subtitle, tags }, index) => (
+              {experiences.map(({ id, category, date_range, position, organization, stack }, index) => (
                 <TimelineItem key={id ?? index}>
                   <TimelineOppositeContent color="text.secondary">
                     <Typography variant="body2" className="dark:text-white">
-                      {date}
+                      {date_range}
                     </Typography>
                   </TimelineOppositeContent>
                   <TimelineSeparator>
                     <TimelineDot
                       sx={{
-                        backgroundColor: type === "work" ? "rgb(33, 150, 243)" : "rgb(233, 30, 99)",
+                        backgroundColor: category === "work" ? "rgb(33, 150, 243)" : "rgb(233, 30, 99)",
                       }}
                     >
-                      {type === "work" ? <WorkIcon /> : <SchoolIcon />}
+                      {category === "work" ? <WorkIcon /> : <SchoolIcon />}
                     </TimelineDot>
                     {index < experiences.length - 1 && <TimelineConnector />}
                   </TimelineSeparator>
                   <TimelineContent>
                     <div className="bg-white dark:bg-slate-700 rounded-lg p-4 shadow-lg">
                       <Typography variant="h6" component="h3" className="font-semibold text-black dark:text-white">
-                        {title}
+                        {position}
                       </Typography>
-                      {subtitle && (
+                      {organization && (
                         <Typography variant="subtitle1" className="text-gray-600 dark:text-gray-300">
-                          {subtitle}
+                          {organization}
                         </Typography>
                       )}
-                      {tags && tags.length > 0 && (
+                      {stack && stack.length > 0 && (
                         <div className="flex flex-wrap gap-1 mt-3">
-                          {tags.map((tag) => (
+                          {stack.map((tag) => (
                             <Chip
                               key={tag}
                               label={tag}

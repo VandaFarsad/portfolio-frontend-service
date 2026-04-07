@@ -1,10 +1,13 @@
 export type Experience = {
-  id: string;
-  type: string;
-  date: string;
-  title: string;
-  subtitle: string;
-  tags?: string[];
+  id: number;
+  category: "work" | "education";
+  start_date: string;
+  end_date: string | null;
+  date_range: string;
+  is_current: boolean;
+  organization: string;
+  position: string;
+  stack: string[];
 };
 
 const getBackendUrl = (): string => {
