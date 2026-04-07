@@ -15,7 +15,7 @@ const ICON_MAP: Record<string, string> = {
   docker: "icon-[skill-icons--docker]",
   kubernetes: "icon-[logos--kubernetes]",
   gitlab: "icon-[skill-icons--gitlablight]",
-  github: "icon-[skill-icons--githublight]",
+  // github: "icon-[skill-icons--githublight]",
   git: "icon-[logos--git-icon]",
   typescript: "icon-[skill-icons--typescript]",
   javascript: "icon-[logos--javascript]",
