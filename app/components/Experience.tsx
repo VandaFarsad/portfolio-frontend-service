@@ -1,5 +1,6 @@
 "use client";
 
+import { useFetch } from "@/app/hooks/useFetch";
 import { Experience as ExperienceT, fetchExperiences } from "@/services/experienceData";
 import WorkIcon from "@mui/icons-material/HomeWorkOutlined";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
@@ -11,25 +12,11 @@ import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import { Chip, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 
 type FetchState = "initial" | "loading" | "success" | "error";
 
 const Experience = () => {
-  const [experiences, setExperiences] = useState<ExperienceT[]>([]);
-  const [state, setState] = useState<FetchState>("initial");
-
-  useEffect(() => {
-    setState("loading");
-    fetchExperiences()
-      .then((experience) => {
-        setExperiences(experience);
-        setState("success");
-      })
-      .catch(() => {
-        setState("error");
-      });
-  }, []);
+  const { data: experiences, state } = useFetch<ExperienceT>(fetchExperiences);
 
   return (
     <section

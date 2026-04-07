@@ -1,26 +1,10 @@
 "use client";
 
+import { useFetch } from "@/app/hooks/useFetch";
 import { fetchStack, StackItemWithIcon } from "@/services/stackIconData";
-import { useEffect, useState } from "react";
-
-type FetchState = "initial" | "loading" | "success" | "error";
 
 const Stack = () => {
-  const [stackItems, setStackItems] = useState<StackItemWithIcon[]>([]);
-  const [state, setState] = useState<FetchState>("initial");
-
-  useEffect(() => {
-    setState("loading");
-    fetchStack()
-      .then((data) => {
-        setStackItems(data);
-        setState("success");
-      })
-      .catch(() => {
-        setStackItems([]);
-        setState("error");
-      });
-  }, []);
+  const { data: stackItems, state } = useFetch<StackItemWithIcon>(fetchStack);
 
   return (
     <section className="w-full min-h-screen p-4 sm:p-10 md:p-40 font-sans flex flex-col justify-center items-center bg-white dark:bg-slate-800 text-black dark:text-white">
