@@ -144,7 +144,7 @@ docker network connect nginx_app-network portfolio-frontend
 
 See [/root/nginx/README.md](../../nginx/README.md) for complete Nginx setup and routing configuration.
 
-## 🚀 Automated Deployment (CI/CD)
+## Automated Deployment (CI/CD)
 
 The repository includes a GitHub Actions workflow that automatically deploys to the Hetzner server on each new release.
 
