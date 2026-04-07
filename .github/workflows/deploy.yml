@@ -1,0 +1,49 @@
+name: Deploy to Hetzner
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 23
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm ts:ci
+
+  deploy:
+    name: Deploy
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HETZNER_HOST }}
+          username: ${{ secrets.HETZNER_USER }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          script: |
+            cd /root/portfolio/portfolio-frontend-service
+            git pull origin main
+            docker build -t portfolio-frontend-service .
+            docker rm -f portfolio-frontend || true
+            docker run -d \
+              --name portfolio-frontend \
+              --env-file .env.local \
+              -p 8080:8080 \
+              --network nginx_app-network \
+              --restart unless-stopped \
+              portfolio-frontend-service
