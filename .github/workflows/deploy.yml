@@ -6,8 +6,8 @@ on:
       - 'v*'
 
 jobs:
-  lint:
-    name: Lint & Type Check
+  type-check:
+    name: Type Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: lint
+    needs: type-check
     runs-on: ubuntu-latest
     steps:
       - name: Deploy via SSH
