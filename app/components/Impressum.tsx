@@ -1,28 +1,36 @@
+import Link from "next/link";
+
 const Impressum = () => {
   const currentYear = new Date().getFullYear();
+  const email = ["contact", "initial-commit.com"].join("@");
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-800 text-black dark:text-white p-4 sm:p-8 md:p-16 lg:p-24">
       <div className="max-w-4xl mx-auto">
+        <div className="mb-8">
+          <Link href="/" className="text-pink-600 dark:text-pink-400 hover:underline">
+            &larr; Zurück zur Startseite
+          </Link>
+        </div>
         <h1 className="text-3xl sm:text-4xl font-bold mb-8 pb-2 border-b-4 border-pink-600 dark:border-pink-400 inline-block">
           Impressum
         </h1>
         <div className="mb-6 mt-8">
           <strong className="text-lg font-bold">Verantwortlich für den Inhalt:</strong>
           <address className="mt-2 text-gray-700 dark:text-gray-300 block">
-          IT Freelancer Dr. Vanda Farsad
-          <br />
-          Am Inselpark 9
-          <br />
-          21109 Hamburg
-          <br />
-          Deutschland
-        </address>
-      </div>
+            IT Freelancer Dr. Vanda Farsad
+            <br />
+            Am Inselpark 9
+            <br />
+            21109 Hamburg
+            <br />
+            Deutschland
+          </address>
+        </div>
 
         <div className="mb-6">
           <strong className="text-lg font-bold">Kontakt:</strong>
-          <p className="mt-2 text-gray-700 dark:text-gray-300">E-Mail: contact@initial-commit.com</p>
+          <p className="mt-2 text-gray-700 dark:text-gray-300">E-Mail: {email}</p>
         </div>
 
         <section className="mb-6">
@@ -84,8 +92,8 @@ const Impressum = () => {
             <strong className="text-lg font-bold">1. Haftung für Inhalte</strong>
           </p>
           <p className="mb-4 text-gray-700 dark:text-gray-300">
-          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
-          Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
+          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+          Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet,
           übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf
           eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
           Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch
@@ -156,7 +164,7 @@ const Impressum = () => {
         </section>
 
         <footer className="mt-8 pt-4 border-t border-gray-300 dark:border-gray-700">
-          <p className="text-sm text-gray-600 dark:text-gray-400">© Copyright {currentYear}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Copyright &copy; {currentYear} Vanda Farsad</p>
         </footer>
       </div>
     </div>

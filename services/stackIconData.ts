@@ -41,9 +41,9 @@ const ICON_MAP: Record<string, string> = {
 const DEFAULT_ICON = "icon-[mdi--code-braces]";
 
 const getBackendUrl = (): string => {
-  const url = process.env.BACKEND_API_URL ?? process.env.NEXT_PUBLIC_BACKEND_API_URL;
+  const url = process.env.NEXT_PUBLIC_BACKEND_API_URL;
   if (!url) {
-    throw new Error("BACKEND_API_URL or NEXT_PUBLIC_BACKEND_API_URL must be configured");
+    throw new Error("NEXT_PUBLIC_BACKEND_API_URL must be configured");
   }
   return url;
 };

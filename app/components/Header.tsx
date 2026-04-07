@@ -7,6 +7,8 @@ import GitHubCorner from "./GitHubCorner";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header = () => {
+  const email = ["contact", "initial-commit.com"].join("@");
+
   return (
     <section className="flex flex-col justify-center items-center min-h-screen text-center bg-white dark:bg-slate-800 text-black dark:text-white">
       <div className="absolute top-4 right-4">
@@ -34,9 +36,9 @@ const Header = () => {
         />
       </div>
       <a
-        href={`mailto:contact@initial-commit.com`}
+        href={`mailto:${email}`}
         className="bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 text-white dark:text-black font-bold py-2 px-4 rounded mt-4 inline-block"
-        title="mailto:contact@initial-commit.com"
+        title="Send email"
       >
         Contact me
       </a>

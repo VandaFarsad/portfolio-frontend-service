@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 const Footer = () => {
+  const email = ["contact", "initial-commit.com"].join("@");
+
   return (
     <footer className="w-full overflow-hidden mx-auto px-10 py-4 flex flex-col items-center bg-white dark:bg-slate-800 text-black dark:text-white">
       <div className="flex space-x-4 mt-8 items-center">
@@ -13,7 +15,7 @@ const Footer = () => {
         <a href="https://www.xing.com/profile/Vanda_Farsad" target="_blank" rel="noopener noreferrer">
           <span className={"h-7 w-7 icon-[mdi--xing]"}></span>
         </a>
-        <a href="mailto:contact@initial-commit.com">
+        <a href={`mailto:${email}`}>
           <span className={"h-7 w-7 icon-[mdi--email]"}></span>
         </a>
       </div>
