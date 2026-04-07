@@ -7,7 +7,7 @@ const Stack = () => {
   const { data: stackItems, state } = useFetch<StackItemWithIcon>(fetchStack);
 
   return (
-    <section className="w-full min-h-screen p-4 sm:p-10 md:p-40 font-sans flex flex-col justify-center items-center bg-white dark:bg-slate-800 text-black dark:text-white">
+    <section className="w-full min-h-screen p-4 sm:p-8 md:p-16 lg:p-24 font-sans flex flex-col justify-center items-center bg-white dark:bg-slate-800 text-black dark:text-white">
       <div className="col-md-12 mx-auto pb-10 pt-8">
         <div className="sm:text-right pb-8 pl-4">
           <p className="text-2xl sm:text-4xl font-bold inline border-b-4 border-pink-600 dark:border-pink-400">
@@ -21,7 +21,7 @@ const Stack = () => {
           {stackItems.map((item, index) => (
             <div
               key={item.id || index}
-              className="flex flex-col justify-center items-center rounded-xl p-3 sm:p-6 dark:bg-white dark:text-black"
+              className="flex flex-col justify-center items-center rounded-xl p-3 sm:p-6 bg-white dark:bg-slate-700 text-black dark:text-white shadow-md"
             >
               <span className={`lg:h-20 lg:w-20 md:h-16 md:w-16 h-12 w-12 ${item.iconClass}`}></span>
               <p className="text-sm sm:text-base">{item.name}</p>
