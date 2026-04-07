@@ -2,15 +2,12 @@
 
 Personal portfolio website for **Dr. Vanda Farsad** - showcasing professional experience, technical skills, and projects.
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework:** [Next.js 16](https://nextjs.org) with App Router
 - **Language:** TypeScript 5.9
 - **Styling:** Tailwind CSS v4 with PostCSS
 - **UI Components:** Material-UI (MUI) v7
-- **Animations:** React Type Animation, React Vertical Timeline
-- **Icons:** Iconify (DevIcon, Logos, Skill Icons, MDI)
-- **Theme:** Dark/Light mode with persistent localStorage
 - **Package Manager:** pnpm 10.13
 - **Containerization:** Docker & Docker Compose
 
@@ -73,36 +70,83 @@ portfolio-frontend-service/
 - Node.js 18+ (recommended: Node 20+)
 - pnpm 10+
 
-### Installation
+## Local Development
 
 ```bash
 # Install dependencies
 pnpm install
-```
 
-### Development
-
-```bash
 # Start development server
 pnpm dev
-
-# Start with Turbopack (faster)
-pnpm dev:turbo
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-### Build & Production
+Alternatively, start with Docker:
 
 ```bash
-# Create production build
-pnpm build
-
-# Start production server
-pnpm start
+docker compose up
 ```
 
-### Code Quality
+## Production Deployment
+
+Production runs as a standalone Docker container with optimized Next.js build output.
+
+### 1. Build the production image
+
+```bash
+docker build -t portfolio-frontend-service .
+```
+
+### 2. Run the container
+
+```bash
+docker run -d \
+  --name portfolio-frontend \
+  -p 3000:3000 \
+  --restart unless-stopped \
+  portfolio-frontend-service
+```
+
+The application is accessible at http://localhost:3000.
+
+### 3. Update after changes
+
+```bash
+docker rm -f portfolio-frontend
+docker build -t portfolio-frontend-service .
+docker run -d \
+  --name portfolio-frontend \
+  -p 3000:3000 \
+  --restart unless-stopped \
+  portfolio-frontend-service
+```
+
+### 4. View logs
+
+```bash
+docker logs -f portfolio-frontend
+```
+
+## Nginx
+
+In production, an external Nginx reverse proxy (managed separately) handles TLS termination and forwards traffic to port 3000.
+
+Connect the frontend container to the Nginx network:
+
+```bash
+docker network connect nginx_app-network portfolio-frontend
+```
+
+## Project Structure
+
+- `app/` — Next.js App Router with components and pages
+  - `components/` — React components (Header, About, Stack, Experience, etc.)
+  - `impressum/` — Legal notice page
+- `services/` — Data layer (experienceData, stackIconData)
+- `public/` — Static assets (images, SVGs)
+
+## Code Quality
 
 ```bash
 # Run ESLint
@@ -111,44 +155,10 @@ pnpm lint
 # Format code with Prettier
 pnpm format
 
-# Check formatting
-pnpm format:check
-
-# Type checking (watch mode)
-pnpm ts-lint
-
-# Type checking (CI)
+# Type checking
 pnpm ts:ci
 ```
 
-## 🐳 Docker
+## License
 
-```bash
-# Build and start container
-docker-compose up -d
-
-# Stop container
-docker-compose down
-```
-
-## 🎨 Features
-
-- ✨ Smooth animations and transitions
-- 🌓 Dark/Light theme with persistent preference
-- 📱 Fully responsive design
-- ⚡ Optimized performance with Next.js
-- 🎯 Type-safe with TypeScript
-- 🔍 SEO optimized with metadata
-- 🎨 Modern UI with Tailwind CSS v4
-- 📊 Interactive timeline for experience
-- 🛠️ Technology stack showcase with icons
-
-## 📝 License
-
-See [LICENSE](LICENSE) file for details.
-
-## 👤 Author
-
-**Vanda Farsad**
-- Email: contact@initial-commit.com
-- Portfolio: [Initial Commit](https://initial-commit.com)
+This project is licensed under the MIT License — see the [LICENSE](./LICENSE) file for details.
