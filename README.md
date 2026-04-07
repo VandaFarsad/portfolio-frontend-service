@@ -103,12 +103,14 @@ docker build -t portfolio-frontend-service .
 ```bash
 docker run -d \
   --name portfolio-frontend \
-  -p 3000:3000 \
+  --env-file .env.local \
+  -p 8080:8080 \
+  --network nginx_app-network \
   --restart unless-stopped \
   portfolio-frontend-service
 ```
 
-The application is accessible at http://localhost:3000.
+The application is accessible at http://localhost:8080.
 
 ### 3. Update after changes
 
@@ -117,7 +119,9 @@ docker rm -f portfolio-frontend
 docker build -t portfolio-frontend-service .
 docker run -d \
   --name portfolio-frontend \
-  -p 3000:3000 \
+  --env-file .env.local \
+  -p 8080:8080 \
+  --network nginx_app-network \
   --restart unless-stopped \
   portfolio-frontend-service
 ```
@@ -130,13 +134,53 @@ docker logs -f portfolio-frontend
 
 ## Nginx
 
-In production, an external Nginx reverse proxy (managed separately) handles TLS termination and forwards traffic to port 3000.
+In production, an external Nginx reverse proxy (managed separately) handles TLS termination and forwards traffic to port 8080.
 
 Connect the frontend container to the Nginx network:
 
 ```bash
 docker network connect nginx_app-network portfolio-frontend
 ```
+
+See [/root/nginx/README.md](../../nginx/README.md) for complete Nginx setup and routing configuration.
+
+## 🚀 Automated Deployment (CI/CD)
+
+The repository includes a GitHub Actions workflow that automatically deploys to the Hetzner server on each new release.
+
+### Workflow
+
+**Trigger:** New GitHub release
+
+**Steps:**
+1. Run linting and type checks
+2. If checks pass: Deploy to production via SSH
+   - Pull latest code from `main` branch
+   - Build Docker image
+   - Stop and remove old container
+   - Start new container with `.env.local`
+
+### Setup
+
+Add these secrets to your GitHub repository (**Settings → Secrets and variables → Actions → Repository secrets**):
+
+| Secret | Value |
+|---|---|
+| `HETZNER_HOST` | Your server IP address |
+| `HETZNER_USER` | SSH username (usually `root`) |
+| `HETZNER_SSH_KEY` | Private SSH key with server access |
+
+### Triggering a Deployment
+
+```bash
+# Create and push a new release tag
+git tag v1.0.0
+git push origin v1.0.0
+
+# Or create release via GitHub UI (Releases → Draft a new release)
+```
+
+View workflow logs in **Actions tab** on GitHub.
 
 ## Project Structure
 
