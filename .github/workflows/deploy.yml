@@ -45,7 +45,7 @@ jobs:
             cd /root/portfolio/portfolio-frontend-service
             git fetch --all --tags
             git checkout "$TAG_NAME"
-            docker build -t portfolio-frontend-service-staging .
+            docker build --network=host -t portfolio-frontend-service-staging .
             docker rm -f portfolio-frontend-staging || true
             docker run -d \
               --name portfolio-frontend-staging \
@@ -75,7 +75,7 @@ jobs:
             cd /root/portfolio/portfolio-frontend-service
             git fetch --all --tags
             git checkout "$TAG_NAME"
-            docker build -t portfolio-frontend-service .
+            docker build --network=host -t portfolio-frontend-service .
             docker rm -f portfolio-frontend || true
             docker run -d \
               --name portfolio-frontend \
